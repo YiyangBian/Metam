@@ -55,6 +55,7 @@ class Oracle:
 
 
 			clf = RandomForestClassifier(random_state=seed)
+			# print("打印看看",X_train,y_train)
 			clf.fit(X_train, y_train)
 			#print(X_test)
 			y_pred=clf.predict(X_test)

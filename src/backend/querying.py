@@ -1,23 +1,23 @@
 import copy
-import profile_weights
+from . import profile_weights
 import profile
 from sklearn.feature_selection import mutual_info_classif
 from os import listdir
 from os.path import isfile, join
 import pandas as pd
-from dataset import Dataset
+from . import dataset
 import math
 import pandas as pd
-from join_path import JoinKey, JoinPath
-from join_column import  JoinColumn
+from .join_path import JoinKey, JoinPath
+from .join_column import  JoinColumn
 import sys
 import pickle
-import join_path
+from . import join_path
 import operator,random
 from sklearn import datasets, linear_model
-import group_helper
+from . import group_helper
 
-def run_metam(tau,oracle,candidates,theta,metric,initial_df,new_col_lst,weights,class_attr,clusters,assignment,uninfo,epsilon):
+def run_metam(centers,tau,oracle,candidates,theta,metric,initial_df,new_col_lst,weights,class_attr,clusters,assignment,uninfo,epsilon):
 
 
     likelihood_num=[]

@@ -22,8 +22,11 @@ class JoinColumn:
         self.class_attr=class_attr
 
         self.key_r=self.join_path.join_path[1].col
+        # print("column和key",column,self.key_r)
+        # print("df",df)
+        # print("base_df",base_df)
+        print("处理完了",column,self.key_r) 
         
-
         if column in base_df.columns:
             new_col_lst=list(self.df.columns)
             new_col_lst.append(column+"_new")
@@ -32,7 +35,7 @@ class JoinColumn:
             self.df[new_name] = self.df[column]
             self.df=self.df[new_col_lst]
             self.column=new_name
-            
+           
 
         if self.key_r in base_df.columns:
             new_col_lst=list(self.df.columns)

@@ -1,5 +1,5 @@
 import pandas as pd
-from join_column import JoinColumn
+from .join_column import JoinColumn
 import random
 def get_column_lst(joinable_lst):
     i=0
@@ -179,11 +179,16 @@ def cluster_join_paths(joinable_lst,k,epsilon):
 
 
 def get_join_paths_from_file(querydata,filepath):
-    df=pd.read_csv(filepath)
-
+    # print("query_data",querydata,"filepath",filepath)
+    df=pd.read_csv(filepath,sep=';',header= 0)
+    # print("打印",df['tbl2']==querydata)
+    print(df)
+    # print("querydata",querydata)
     subdf=df[df['tbl1']==querydata]
     subdf2=df[df['tbl2']==querydata]
-
+    # print("sdas",df['tbl2']==querydata)
+    # print("有打印2",subdf)
+    # print("有打印",subdf2)
     options=[]
 
     for index,row in subdf.iterrows():
@@ -194,9 +199,9 @@ def get_join_paths_from_file(querydata,filepath):
 
         jk2.tbl=row['tbl2']
         jk2.col=row['col2']
+        print(row['tbl1'],row['tbl2'])
         ret_jp = JoinPath([jk1,jk2])
         options.append(ret_jp)
-
 
     for index,row in subdf2.iterrows():
         jk1=JoinKey('','',0,0)
@@ -209,5 +214,5 @@ def get_join_paths_from_file(querydata,filepath):
         ret_jp = JoinPath([jk2,jk1])
         options.append(ret_jp)
 
-
+    # print("options",options)
     return options
